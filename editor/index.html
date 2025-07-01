@@ -1,40 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>GrapesJS Editor</title>
-    <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
+      body, html {
         height: 100%;
+        margin: 0;
       }
       #gjs {
-        height: 100vh;
-        overflow: hidden;
+        height: 100%;
       }
     </style>
   </head>
   <body>
     <div id="gjs">
-      <h1 style="text-align: center">Lateral Website Visual Editor</h1>
-      <p style="text-align: center">Drag components from the left panel.</p>
+      <h1>Welcome to Lateral Website Builder</h1>
+      <p>This is a starter page. You can drag components from the left and edit them.</p>
     </div>
 
     <script src="https://unpkg.com/grapesjs"></script>
-    <script src="https://unpkg.com/grapesjs-preset-webpage"></script>
     <script>
       const editor = grapesjs.init({
         container: '#gjs',
         fromElement: true,
         height: '100%',
-        width: 'auto',
         storageManager: false,
-        plugins: ['gjs-preset-webpage'],
-        pluginsOpts: {
-          'gjs-preset-webpage': {}
-        }
+        plugins: [],
+        panels: {
+          defaults: [
+            {
+              id: 'panel-top',
+              el: '.panel__top',
+            },
+            {
+              id: 'basic-actions',
+              el: '.panel__basic-actions',
+              buttons: [
+                {
+                  id: 'visibility',
+                  active: true,
+                  label: '📱',
+                  command: 'sw-visibility',
+                },
+                {
+                  id: 'export',
+                  className: 'btn-open-export',
+                  label: '⤓',
+                  command: 'export-template',
+                  context: 'export-template',
+                },
+              ],
+            },
+          ],
+        },
       });
     </script>
   </body>
