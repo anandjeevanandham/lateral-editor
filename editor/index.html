@@ -5,24 +5,36 @@
     <title>GrapesJS Editor</title>
     <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
     <style>
-      body, html { height: 100%; margin: 0; }
-      #gjs { height: 100vh; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      #gjs {
+        height: 100vh;
+        overflow: hidden;
+      }
     </style>
   </head>
   <body>
     <div id="gjs">
-      <h1>Welcome to Lateral Therapy Editor</h1>
-      <p>Start editing by dragging blocks from the left.</p>
+      <h1 style="text-align: center">Lateral Website Visual Editor</h1>
+      <p style="text-align: center">Drag components from the left panel.</p>
     </div>
 
     <script src="https://unpkg.com/grapesjs"></script>
+    <script src="https://unpkg.com/grapesjs-preset-webpage"></script>
     <script>
       const editor = grapesjs.init({
         container: '#gjs',
         fromElement: true,
+        height: '100%',
+        width: 'auto',
         storageManager: false,
-        panels: { defaults: [] },
         plugins: ['gjs-preset-webpage'],
+        pluginsOpts: {
+          'gjs-preset-webpage': {}
+        }
       });
     </script>
   </body>
