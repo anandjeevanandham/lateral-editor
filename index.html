@@ -1,61 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>GrapesJS Editor</title>
-    <link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
-    <style>
-      body, html {
-        height: 100%;
-        margin: 0;
-      }
-      #gjs {
-        height: 100%;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="gjs">
-      <h1>Welcome to Lateral Website Builder</h1>
-      <p>This is a starter page. You can drag components from the left and edit them.</p>
-    </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lateral Website Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #gjs {
+      height: 100vh;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div id="gjs">
+    <h1>Welcome to Lateral Website Builder</h1>
+    <p>This is your starting page. Drag blocks from the left.</p>
+  </div>
 
-    <script src="https://unpkg.com/grapesjs"></script>
-    <script>
-      const editor = grapesjs.init({
-        container: '#gjs',
-        fromElement: true,
-        height: '100%',
-        storageManager: false,
-        plugins: [],
-        panels: {
-          defaults: [
-            {
-              id: 'panel-top',
-              el: '.panel__top',
-            },
-            {
-              id: 'basic-actions',
-              el: '.panel__basic-actions',
-              buttons: [
-                {
-                  id: 'visibility',
-                  active: true,
-                  label: '📱',
-                  command: 'sw-visibility',
-                },
-                {
-                  id: 'export',
-                  className: 'btn-open-export',
-                  label: '⤓',
-                  command: 'export-template',
-                  context: 'export-template',
-                },
-              ],
-            },
-          ],
-        },
-      });
-    </script>
-  </body>
+  <script src="https://unpkg.com/grapesjs"></script>
+  <script src="https://unpkg.com/grapesjs-preset-webpage"></script>
+  <script>
+    const editor = grapesjs.init({
+      container: '#gjs',
+      fromElement: true,
+      height: '100%',
+      storageManager: false,
+      plugins: ['gjs-preset-webpage'],
+      pluginsOpts: {
+        'gjs-preset-webpage': {
+          blocks: [
+            'section', 'text', 'image', 'video', 'link', 'quote', 'map',
+            'button', 'grid-items', 'form', 'form-input', 'form-textarea',
+            'form-select', 'form-checkbox', 'form-radio', 'form-button'
+          ]
+        }
+      }
+    });
+  </script>
+</body>
 </html>
